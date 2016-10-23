@@ -1,0 +1,7 @@
+php.ini
+.htaccess
+image/cache/
+system/storage/cache/
+system/storage/logs/
+config.php
+admin/config.php
