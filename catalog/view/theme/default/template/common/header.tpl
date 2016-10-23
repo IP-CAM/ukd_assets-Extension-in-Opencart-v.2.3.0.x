@@ -43,7 +43,7 @@ ob_end_flush();
     <?php echo $analytic; ?>
     <?php } ?>
   </head>
-  <?php ob_flush()?>
+  <?php ?>
 
   <body class="<?php echo $class; ?>">
     <datalist id='scripts'><?php foreach ($scripts as $script) { ?><option value="<?php echo $script; ?>"></option><?php } ?><option value="catalog/view/javascript/common.js"></option></datalist>
