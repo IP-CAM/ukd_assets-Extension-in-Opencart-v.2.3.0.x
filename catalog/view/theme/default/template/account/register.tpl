@@ -249,7 +249,7 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" hidden="hidden">
             <label class="col-sm-2 control-label" for="input-company"><?php echo $entry_company; ?></label>
             <div class="col-sm-10">
               <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control" />
@@ -654,23 +654,15 @@ $('.datetime').datetimepicker({
 });
 
 
-//$('select[name=\'country_id\']').trigger('change');
-
-require(["mask"], function() {
-    $('.phone_mask').mask('(00) 000000000', {placeholder: "(DDD) Número do telefone"});
-    $('.postcode_mask').mask('00000000', {placeholder: "Somente números. Ex.: 42850000"});
-    $('input[placeholder=CPF]').mask('00000000000');
-    $('input[name=postcode]').mask('00000000000');
-    getAddressByPostcode('#register-form');
-});
-
-
 form_id = '#register-form';
 <?php
 require_once 'catalog/view/ukd_assets/js/getAddressByPostcode.inc.js';
 require_once 'catalog/view/ukd_assets/js/validate-mask.inc.js';
 ?>
 
+$('#register-form').submit(function(event) {
+    $(form_id + ' select[name=\'zone_id\']').attr('disabled', false)
+});
 
 })
 //--></script>

@@ -25,29 +25,31 @@ require.config({
         "datetimepicker": {
             deps: ["moment"]
         },
-        "mask": {
-            deps: ["jquery"]
-        },
+        // "mask": {
+        //     deps: ["jquery"]
+        // },
     }
 })
 
-require(["common"], function() {
+// require(["common"], function() {
+//
+//     var p = [];
+//
+//     $('#scripts option').each(function() {
+//         p.push($(this).val());
+//         //console.log($(this).val());
+//     });
+//
+//     //console.log( window.ukd_fn);
+//
+//     require(p, function() {
+//         for (i in window.ukd_fn) window.ukd_fn[i]();
+//         window.ukd_fn = [];
+//     });
+//
+// });
 
-    var p = [];
 
-    $('#scripts option').each(function() {
-        p.push($(this).val());
-        //console.log($(this).val());
-    });
-
-    //console.log( window.ukd_fn);
-
-    require(p, function() {
-        for (i in window.ukd_fn) window.ukd_fn[i]();
-        window.ukd_fn = [];
-    });
-
-});
 
 //common functions
 

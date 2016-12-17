@@ -156,9 +156,9 @@ $i++;
 ?>
 
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
-<input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
-<input name="reference" type="hidden" value="" />
-
+<!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
+<input name="reference" type="hidden" value="" /> -->
+<input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
 <script type="text/javascript">
@@ -166,7 +166,6 @@ $i++;
 //console.log('<?php echo $continue; ?>');
 
 var img_url = '<?php echo $img_url ?>';
-var transactions_url = '<?php echo $transactions ?>';
 var locationURL = '<?php echo $continue; ?>';
 var directpayment = '<?php echo $directpayment ?>';
 var amount = '<?php echo number_format( $total + $shipping_method['cost'], 2, '.', '' ) ?>';
@@ -212,13 +211,11 @@ $('#button-confirm').on('click', function() {
                 //$('#button-confirm').button('reset');
             },
             success: function() {
-                //location = locationURL;
-                //process();
                 startPayment();
             },
             error: function() {
                 for (i in res) {
-                    console.log(res[i], i, 'error confirm');
+                    console.log(res[i], i, 'error on confirm');
                 }
             }
         });
@@ -290,7 +287,7 @@ function getSessionId() {
 
         },
         error: function(res) {
-            console.log(res, 'Error on getSessionId function');
+            console.log(res, 'Error on getSessionId');
             // if (error_count < 5) getSessionId();
             // error_count++;
         }
@@ -308,7 +305,7 @@ function getPaymentMethods(sessionId) {
                 getPaymentMethodsCallback(res);
             },
             error: function(res) {
-                console.log(res, 'Error on getPaymentMethods function');
+                console.log(res, 'Error on getPaymentMethods');
                 alert('O gateway de pagamento está temporariamente indisponível.');
             },
             complete: function(res) {
@@ -370,11 +367,13 @@ function process() {
 
       $("#form_pagseguro input[name=senderHash]").val(PagSeguroDirectPayment.getSenderHash());
 
+      //console.log('senderHash:', $("#form_pagseguro input[name=senderHash]").val() );
+
     }
 
     $.ajax({
         type: "POST",
-        url: "catalog/view/ukd_assets/php/checkout/process.php?url=" + transactions_url,
+        url: "catalog/view/ukd_assets/php/checkout/process.php",
         data: $("#form_pagseguro").serialize(),
         dataType: "json",
         cache: false,
@@ -382,12 +381,12 @@ function process() {
 
             if (res) {
                 if (res['error']) {
-                    console.log(res, 'Error on process function');
+                    console.log(res, 'Error on process');
                     error = true;
                     processError(res['error']);
 
                 } else {
-                    console.log(res, 'Error on process function');
+                    console.log(res, 'Error on process');
                     onFinishPayment(res)
                 }
             } else {
@@ -398,6 +397,7 @@ function process() {
         error: function(jqxhr) {
 
             alert(jqxhr.resonseText);
+            console.log('process error', jqxhr);
 
         },
         complete: function() {
@@ -462,6 +462,12 @@ function processError(error) {
 
 function filterError(code) {
 
+  if(!code){
+
+    alert('Ocorreu uma falha ao processar o pagamento. Por favor, tente mais tarde.')
+
+  }else{
+
     if (code == 10000 || code == 10001) {
         $('#cc_form input[name=cardNumber]').parent('.input-group').addClass('has-error');
     }
@@ -488,10 +494,9 @@ function filterError(code) {
         //window.token = null;
     }
 
+  }
     //53021 - sender phone invalid value
-
     console.log(code, 'filterError');
-
 }
 
 function errorAlert(content){

@@ -18,7 +18,7 @@ require_once '../security.php';
         <div class="col-sm-12">
           <div class="form-group">
             <label for="cardOwner">NOME DO TITULAR</label>
-            <input type="text" class="form-control onlyname" name="cardOwner" placeholder="Nome" value="Frederico Ukita" />
+            <input type="text" class="form-control onlyname" name="cardOwner" placeholder="Nome" value="" />
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@ require_once '../security.php';
         <div class="col-sm-6">
           <div class="form-group">
             <label for="cardOwner">CPF DO TITULAR</label>
-            <input type="text" class="form-control numeric" name="cpf" placeholder="CPF" maxlength="11" value="96456590515" />
+            <input type="text" class="form-control numeric" name="cpf" placeholder="CPF" maxlength="11" value="" />
           </div>
         </div>
         <div class="col-sm-6">
@@ -43,7 +43,7 @@ require_once '../security.php';
           <div class="form-group">
             <label for="cardNumber"><span class="hidden-xs">NÚMERO DO CARTÃO DE CRÉDITO</span><span class="visible-xs-inline">N° DO CARTÃO</span></label>
             <div class="input-group">
-              <input type="text" class="form-control creditcard numeric" name="cardNumber" maxlength="19" placeholder="Valid Card Number" value="4111111111111111" />
+              <input type="text" class="form-control creditcard numeric" name="cardNumber" maxlength="19" placeholder="Valid Card Number" value="" />
               <span class="input-group-addon"><img id="card_brand" src="" style="display:none" /><i id="card_label" class="fa fa-credit-card"></i></span>
             </div>
           </div>
@@ -60,7 +60,7 @@ require_once '../security.php';
         <div class="col-sm-6">
           <div class="form-group">
               <label for="cardCVC"><span class="hidden-sm">CÓDIGO DE SEGURANÇA</span><span class="visible-sm-inline">C. DE SEGURANÇA</span></label>
-            <input type="tel" class="form-control numeric" name="cardCVC" maxlength="3" placeholder="CVC" value="123" />
+            <input type="tel" class="form-control numeric" name="cardCVC" maxlength="3" placeholder="CVC" value="" />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 /*  Load Mask Lib */
-require(["mask"], function() {
-  $('.phone_mask').mask('(00) 000000000', {placeholder: "(DDD) Número do telefone"});
-  $('.postcode_mask').mask('00000000', {placeholder: "Somente números. Ex.: 42850000"});
-})
+// require(["mask"], function() {
+//   $('.phone_mask').mask('(00) 000000000', {placeholder: "(DDD) Número do telefone"});
+//   $('.postcode_mask').mask('00000000', {placeholder: "Somente números. Ex.: 42850000"});
+// })
 
 $(collapse_id + ' input[name=\'postcode\']').keyup(function(event) {
 

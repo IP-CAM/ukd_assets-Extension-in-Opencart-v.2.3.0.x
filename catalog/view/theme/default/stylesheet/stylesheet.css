@@ -551,6 +551,7 @@ hr {
 
 #content {
     min-height: 600px;
+    font-size: 14px;
 }
 
 
@@ -562,6 +563,7 @@ footer {
     background-color: #242F2D;
     border-top: 1px solid #ddd;
     color: #e2e2e2;
+    padding-bottom: 30px;
 }
 
 footer hr {
@@ -585,6 +587,15 @@ footer h5 {
 }
 
 
+
+footer img {
+  margin: 0px;
+  padding: 0;
+  margin-bottom: 3px;
+
+}
+
+
 /* alert */
 
 .alert {
@@ -599,7 +610,7 @@ footer h5 {
 }
 
 .breadcrumb i, .breadcrumb a, .breadcrumb li {
-    font-size: 15px;
+    font-size: 12px;
     color: #492447;
 }
 

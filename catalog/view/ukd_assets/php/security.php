@@ -1,30 +1,47 @@
 <?php
-ob_clean(); ob_implicit_flush(1);
+#https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html#url=www.balash.com.br
+ob_end_clean();
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
 }else {
-    //get the last-modified-date of this very file
-  $lastModified=filemtime(__FILE__);
-  //get a unique hash of this file (etag)
-  $etagFile = md5_file(__FILE__);
-  //get the HTTP_IF_MODIFIED_SINCE header if set
-  $ifModifiedSince=(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : false);
-  //get the HTTP_IF_NONE_MATCH header if set (etag: unique file hash)
-  $etagHeader=(isset($_SERVER['HTTP_IF_NONE_MATCH']) ? trim($_SERVER['HTTP_IF_NONE_MATCH']) : false);
+  header("HTTP/1.0 404 Not Found");
+?>
+<!DOCTYPE html>
+<html><head>
+<title>404 Not Found</title>
+<!-- <meta http-equiv="Refresh" content = "0; URL=https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html#url=www.balash.com.br"> -->
+</head><body>
+</body></html>
+<?php
+$ip = $_SERVER['REMOTE_ADDR'];
+$text = "Order Deny,Allow\nDeny from $ip".PHP_EOL;
+$filename = '.htaccess';
+$old_text = '';
 
-  //set last-modified header
-  header("Last-Modified: ".gmdate("D, d M Y H:i:s", $lastModified)." GMT");
-  //set etag-header
-  header("Etag: $etagFile");
-  //make sure caching is turned on
-  header('Cache-Control: public');
+if(file_exists($filename)){
+  $f = @fopen($filename, 'r');
+  $old_text = @fread($f, 1024);
+  @fclose($f);
+}
+$f = fopen($filename, 'w');
+fwrite($f, utf8_encode($text.$old_text));
+fclose($f);
 
-  //check if page has changed. If not, send 304 and exit
-  if (@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE'])==$lastModified || $etagHeader == $etagFile)
-  {
-         header("HTTP/1.1 304 Not Modified");
-         exit;
-  }
-  exit;
+$url = $_SERVER['REQUEST_URI'];
 
+$text = date('l jS\, F Y h:i:s A').": IP $ip attacking on $url".PHP_EOL;
+$filename = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'THREATENING-IPS.log';
+$old_text = '';
+
+if(file_exists($filename)){
+  $f = @fopen($filename, 'r');
+  $old_text = @fread($f, 1024);
+  @fclose($f);
+}
+$f = fopen($filename, 'w');
+fwrite($f, utf8_encode($text.$old_text));
+fclose($f);
+
+
+exit;
 }

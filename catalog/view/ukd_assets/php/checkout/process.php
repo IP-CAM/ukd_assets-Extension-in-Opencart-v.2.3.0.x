@@ -1,6 +1,6 @@
 <?php
 
-$url = $_GET['url'];
+require_once '../security.php';
 
 function sanitizeString($str)
 {
@@ -34,40 +34,57 @@ foreach ($_POST as $key => $value) {
         $data[$key] = $value;
     }
 }
-// $data['email'] = 'fredukita@gmail.com';
-// $data['token'] = '9E7583A0AB8F44EC9E6D72FB81C4693F';
 
-$curl = curl_init($url);
+$url = $data['transactions_url'].'?'.http_build_query($data, '', '&amp;');
+$charset = 'ISO-8859-1';
+$postFields = ($data ? http_build_query($data, '', '&') : "");
+$contentLength = "Content-length: " . strlen($postFields);
+$methodOptions = array(
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $postFields,
+);
 
-curl_setopt($curl, CURLOPT_URL, $url);
+$options = array(
+    CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/x-www-form-urlencoded; charset='.$charset,
+        $contentLength,
+    ),
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER => false,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_SSL_VERIFYHOST => false,
+    CURLOPT_CONNECTTIMEOUT => 20,
+);
 
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+$options = ($options + $methodOptions);
 
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-curl_setopt($curl, CURLOPT_HEADER, false);
-
-curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
-
-curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+$curl = curl_init();
+curl_setopt_array($curl, $options);
+$resp = curl_exec($curl);
 
 //ERRORS
+$info = curl_getinfo($curl);
 $error = curl_errno($curl);
 $errorMessage = curl_error($curl);
-
-$result = curl_exec($curl);
 
 curl_close($curl);
 
 $finfo = new finfo(FILEINFO_MIME);
 
+$status = $info['http_code'];
+
 header('Content-Type: application/json');
 
-if ($error || strpos($finfo->buffer($result),'application/xml') == -1 ) {
-    exit(json_encode(array('error'=>$errorMessage)));
+if ($error || strpos($finfo->buffer($resp), 'application/xml') == -1) {
+    exit(json_encode(array('error' => $errorMessage)));
 } else {
-    $xml = simplexml_load_string($result);
-    exit(json_encode($xml));
+    //$xml = simplexml_load_string($resp);
+    if ($resp != 'Unauthorized') {
+        $xml = simplexml_load_string($resp);
+        $xml['status'] = $status;
+        exit(json_encode($xml));
+    } else {
+        exit(json_encode(array('error' => $resp)));
+    }
 }

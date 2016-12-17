@@ -29,6 +29,10 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+		$this->document->addScript('catalog/view/javascript/jquery/mask/jquery.mask.min.js');
+		$this->document->addScript('catalog/view/javascript/jquery/scroll/jquery.scroll.js');
+		$this->document->addScript('catalog/view/ukd_assets/js/checkout.js');
+		
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 		$this->document->addStyle('catalog/view/ukd_assets/css/checkout.css');
 

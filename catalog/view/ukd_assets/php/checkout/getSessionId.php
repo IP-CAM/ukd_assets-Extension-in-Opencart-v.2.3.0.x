@@ -3,7 +3,7 @@
 if(isset($_POST) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
   /* special ajax here */
   require_once '../../../../../system/library/PagSeguroLibrary/PagSeguroLibrary.php';
-  ob_clean();
+
   $data = [];
   try {
       $credentials = new PagSeguroAccountCredentials($_POST['email'] , $_POST['token']);
@@ -12,6 +12,7 @@ if(isset($_POST) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SE
       //die($e->getMessage());
       $data['error'] = $e->getMessage();
   }
+  ob_end_clean();
   header('Content-Type: application/json');
   exit(json_encode($data));
 

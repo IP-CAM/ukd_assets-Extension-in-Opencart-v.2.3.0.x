@@ -84,12 +84,9 @@
             <div class="panel-body"></div>
           </div>
         </div>
-
-
-          <div style="text-align:right; margin-top:30px; clear:both">
-            Pagamento processado pelo   <img src="catalog/view/ukd_assets/images/logo_pagseguro200x41.png" alt="PagSeguro" title="Compre com pagSeguro e fique sossegado" />
+          <div style="text-align:right; margin-top:30px; font-size:12px ;clear:both">
+            <span style="margin-right:10px">Pagamento processado por</span><img src="catalog/view/ukd_assets/images/logo_pagseguro200x41.png" alt="PagSeguro" title="Compre com pagSeguro e fique sossegado" />
           </div>
-
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
@@ -100,7 +97,7 @@ window.customer = <?php echo $customer ?> ;
 window.ukd_fn = window.ukd_fn || [];
 window.ukd_fn.push(function() {
 //ukd_pagseguro
-require(["catalog/view/ukd_assets/js/checkout.js"], function(){
+// require(["catalog/view/ukd_assets/js/checkout.js"], function(){
 $(document).on('change', 'input[name=\'account\']', function() {
 	if ($('#collapse-payment-address').parent().find('.panel-heading .panel-title > *').is('a')) {
 		if (this.value == 'register') {
@@ -813,7 +810,7 @@ $(document).delegate('#button-payment-method', 'click', function() {
 });
 
 });
-});
+// });
 <?php
 require_once 'catalog/view/ukd_assets/js/getAddressByPostcode.inc.js';
 ?>

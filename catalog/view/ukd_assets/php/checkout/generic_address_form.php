@@ -201,8 +201,6 @@
 </form>
 <script type="text/javascript"><!--
 
-
-
 addressForm('<?php echo $id ?>')
 
 getAddressByPostcode('#form-' + '<?php echo $id ?>');
