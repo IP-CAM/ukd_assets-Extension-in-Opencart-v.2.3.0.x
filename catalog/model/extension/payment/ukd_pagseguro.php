@@ -17,7 +17,7 @@ class ModelExtensionPaymentUkdPagseguro extends Model
         if ($status) {
             $method_data = [
 							'code' => 'ukd_pagseguro',
-							'title' => 'Ukd Pagseguro',
+							'title' => 'Pagseguro',
 							'terms' => '',
 							'sort_order' => $this->config->get('ukd_pagseguro_sort_order')
 						];

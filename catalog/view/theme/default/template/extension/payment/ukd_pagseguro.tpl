@@ -158,6 +158,7 @@ $i++;
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
 <!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
 <input name="reference" type="hidden" value="" /> -->
+<input name="reference" type="hidden" value="REF<?php echo $order_id ?>" />
 <input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 

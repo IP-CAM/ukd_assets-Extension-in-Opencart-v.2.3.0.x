@@ -3,7 +3,7 @@
   <?php echo $text_payment_method; ?>
 </p>
 
-<div class="container col-sm-12 ">
+<div class="container col-sm-12">
   <div class="row">
     <div class="col-sm-4 funkyradio-primary funkyradio" title="Boleto Bancário">
       <input type="radio" name="pagseguro_method" id="blt" value="boleto" checked="checked" />
@@ -54,6 +54,12 @@ if(!window.pagseguro_method){
 $('#collapse-payment-method input[name=pagseguro_method]').click(function(event) {
 
   window.pagseguro_method = $(this).val();
+
+  // $.ajax({
+  //   url: 'register_payment_method.php?method=' + $(this).val(),
+  //   type: 'GET'
+  // })
+
 
 });
 
