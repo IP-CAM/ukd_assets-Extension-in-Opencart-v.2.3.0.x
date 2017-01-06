@@ -30,13 +30,13 @@
                 <?php echo $column_order_id; ?>
               </td>
               <td class="text-left">
-                <?php echo $column_customer; ?>
-              </td>
-              <td class="text-right">
                 <?php echo $column_product; ?>
               </td>
               <td class="text-left">
                 <?php echo $column_status; ?>
+              </td>
+              <td class="text-left">
+                <?php echo 'Pagamento' ?>
               </td>
               <td class="text-right">
                 <?php echo $column_total; ?>
@@ -54,12 +54,12 @@
                 <?php echo $order['order_id']; ?>
               </td>
               <td class="text-left">
-                <?php echo $order['name']; ?>
-              </td>
-              <td class="text-right">
                 <?php echo $order['products']; ?>
               </td>
-              <td class="text-left" id="<?php echo $order['order_id'] ?>">
+              <td class="text-left">
+                <?php echo $order['status']; ?>
+              </td>
+              <td class="text-left" id="<?php echo $order['order_id'] ?>" data-link="<?php echo $order['link'] ?>">
                 <?php echo 'carregando...'; ?>
               </td>
               <td class="text-right">
@@ -68,15 +68,18 @@
               <td class="text-left">
                 <?php echo $order['date_added']; ?>
               </td>
-              <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+              <td class="text-left" id="col_<?php echo $order['order_id'] ?>"><a id="btn_<?php echo $order['order_id'] ?>" data-link="<?php echo $order['view']; ?>&link='<?php echo $order['link'] ?>'" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
             <script>
               window.ukd_fn = window.ukd_fn || [];
 
               window.ukd_fn.push(
+
                 function() {
 
                   var ref = "<?php echo ltrim($order['order_id'],'#'); ?>";
+                  var btn = $('#btn_' + ref);
+                  var col = $('#col_' + ref);
 
                   $.ajax({
                     type: "GET",
@@ -88,16 +91,37 @@
                       //   var name = $(this).find("name").text()
                       //   alert(name);
                       // });
+
+                      var link = $('#' + ref).data('link');
                       var status = json['transactions']['transaction']['status'];
                       var paymentMethod = json['transactions']['transaction']['paymentMethod']['type'];
-                      var title = ['', '<a href="#">Pagar agora</a>', 'Em análise', 'Paga', 'Disponível', 'Em disputa', 'Devolvida', 'Cancelada'];
+                      var title = ['', '<span style="color:orangered">Pagamento pendente <i class="fa fa-exclamation-circle"></i></span></span>', 'Em análise', '<span style="color:SeaGreen">Pago <i class="fa fa-check"></i></span>','Disponível', '<span>Em disputa <i class="fa fa-warning"></i></span>', '<span>Devolvido <i class="fa fa-reply"></i></span>', '<span>Cancelado <i class=" fa fa-remove"></i></span>'
+                      ];
+
+                      if (status == 1) {
+                        btn.attr("href", btn.data('link') + '&paynow=' + title[status]);
+                        col.append(' <a class="btn btn-secondary" target="_blank" href="' + link + '">Pagar agora</a>');
+                      } else if (status == 2 || status == 3) {
+                        btn.attr("href", btn.data('link') + '&paid=' + title[status]);
+                      } else if (status == 4) {
+                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                      } else if (status == 5) {
+                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                      } else if (status == 6) {
+                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                      } else if (status == 7) {
+                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                      }
+
 
                       if (paymentMethod == 1 && status == 1) {
 
                         $('#' + ref).html(title[2]);
 
-                      } else
+                      } else {
                         $('#' + ref).html(title[status]);
+                      }
+
                       console.log(json);
                     }
                   });

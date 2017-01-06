@@ -51,7 +51,7 @@ $('#collapse-checkout-confirm').on('hide.bs.collapse', function() {
 });
 
 function addressForm(id) {
-  console.log(id);
+    //console.log(id);
     $('#form-' + id + ' input[value=existing]').on('change', function() {
 
         $('div#' + id + '-existing').show();
@@ -60,7 +60,7 @@ function addressForm(id) {
         //$(id + ' input[name=' + id + '_address]').val('existing');
         //console.log('existing_address');
 
-      //  $(id + ' input[name=' + id + '_address]').prop('value', 'existing')
+        //  $(id + ' input[name=' + id + '_address]').prop('value', 'existing')
 
 
     })
@@ -162,37 +162,37 @@ function addressForm(id) {
 
 
 
-//
-// //ukd
-//
-// if (window[id + '_address']) {
-//     //console.log(window[id+'_address']);
-//     for (i in window[id + '_address']) {
-//         if (i == 'radio_address') {
-//             $('#form-' + id + ' input[value="' + window[id + '_address'][i] + '"]').click();
-//         } else {
-//             $('#form-' + id + '> *[name=\'' + i + '\']').val(window[id + '_address'][i]);
-//         }
-//     }
-// } else {
-//     window[id + '_address'] = [];
-// }
-//
-// var el = $('#form-' + id + ' input, #form-' + id + ' select');
-//
-// el.blur(function(event) {
-//
-//     el.each(function() {
-//
-//         window[id + '_address'][$(this).attr('name')] = $(this).val();
-//
-//     });
-//
-// });
-//
-// $('#form-' + id + ' select[name=\'address_id\']').change(function(event) {
-//     window[id + '_address'] = $(this).find('option:selected').data('address');
-// }).trigger('change');
+    //
+    // //ukd
+    //
+    // if (window[id + '_address']) {
+    //     //console.log(window[id+'_address']);
+    //     for (i in window[id + '_address']) {
+    //         if (i == 'radio_address') {
+    //             $('#form-' + id + ' input[value="' + window[id + '_address'][i] + '"]').click();
+    //         } else {
+    //             $('#form-' + id + '> *[name=\'' + i + '\']').val(window[id + '_address'][i]);
+    //         }
+    //     }
+    // } else {
+    //     window[id + '_address'] = [];
+    // }
+    //
+    // var el = $('#form-' + id + ' input, #form-' + id + ' select');
+    //
+    // el.blur(function(event) {
+    //
+    //     el.each(function() {
+    //
+    //         window[id + '_address'][$(this).attr('name')] = $(this).val();
+    //
+    //     });
+    //
+    // });
+    //
+    // $('#form-' + id + ' select[name=\'address_id\']').change(function(event) {
+    //     window[id + '_address'] = $(this).find('option:selected').data('address');
+    // }).trigger('change');
 
 
 }

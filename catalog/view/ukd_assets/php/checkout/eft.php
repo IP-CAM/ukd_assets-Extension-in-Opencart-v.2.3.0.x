@@ -101,7 +101,10 @@ function validate(){
 
 function onFinishPayment(res){
 
-    window.location = locationURL + '&eft=' + res['paymentLink'];
+    //window.location = locationURL + '&eft=' + res['paymentLink'];
+
+    var link =  res['paymentLink'].split('?c=');
+    window.location = locationURL + '&type=eft&link=' + link[0] + '&code=' + link[1];
 
 }
 

@@ -16,7 +16,8 @@ function startPayment() {
 
 function onFinishPayment(res){
 
-  window.location = locationURL + '&boleto=' + res['paymentLink'];
+  var link =  res['paymentLink'].split('?c=');
+  window.location = locationURL + '&type=boleto&link=' + link[0] + '&code=' + link[1];
   //alert(locationURL + '&link=' + res['paymentLink']);
 
 }

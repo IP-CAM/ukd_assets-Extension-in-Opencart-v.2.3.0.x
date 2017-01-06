@@ -158,7 +158,6 @@ $i++;
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
 <!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
 <input name="reference" type="hidden" value="" /> -->
-<input name="reference" type="hidden" value="REF<?php echo $order_id ?>" />
 <input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
@@ -181,7 +180,7 @@ var validate = function() {};
 var startPayment = function() {};
 var onFinishPayment = function() {};
 
-$('#button-confirm').attr('disabled', true);
+$('#button-confirm').button('loading');
 
 $('#processModal').modal({
     backdrop: 'static',
@@ -212,11 +211,13 @@ $('#button-confirm').on('click', function() {
                 //$('#button-confirm').button('reset');
             },
             success: function() {
+                //location = locationURL;
+                //process();
                 startPayment();
             },
             error: function() {
                 for (i in res) {
-                    console.log(res[i], i, 'error on confirm');
+                    console.log(res[i], i, 'error confirm');
                 }
             }
         });
@@ -288,7 +289,7 @@ function getSessionId() {
 
         },
         error: function(res) {
-            console.log(res, 'Error on getSessionId');
+            console.log(res, 'Error on getSessionId function');
             // if (error_count < 5) getSessionId();
             // error_count++;
         }
@@ -306,7 +307,7 @@ function getPaymentMethods(sessionId) {
                 getPaymentMethodsCallback(res);
             },
             error: function(res) {
-                console.log(res, 'Error on getPaymentMethods');
+                console.log(res, 'Error on getPaymentMethods function');
                 alert('O gateway de pagamento está temporariamente indisponível.');
             },
             complete: function(res) {
@@ -325,7 +326,7 @@ function getPaymentMethodsCallback(res) {
     if (pagseguro_method == 'boleto') {
 
         if (res['paymentMethods']['BOLETO']['options']['BOLETO']['status'] == 'AVAILABLE') {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
         } else {
             alert('Pagamento via Boleto Bancário temporariamente indisponível.');
         }
@@ -335,7 +336,7 @@ function getPaymentMethodsCallback(res) {
         window.options = res['paymentMethods']['CREDIT_CARD']['options'];
 
         if (window.options) {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
             //init_cc();
         } else {
             alert('Pagamento via Cartão de Crédito está temporariamente indisponível.');
@@ -346,7 +347,7 @@ function getPaymentMethodsCallback(res) {
         window.options = res['paymentMethods']['ONLINE_DEBIT']['options'];
 
         if (window.options) {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
             init_eft();
         } else {
             alert('Pagamento via Débito Online está temporariamente indisponível.');
@@ -368,7 +369,7 @@ function process() {
 
       $("#form_pagseguro input[name=senderHash]").val(PagSeguroDirectPayment.getSenderHash());
 
-      //console.log('senderHash:', $("#form_pagseguro input[name=senderHash]").val() );
+      console.log('senderHash:', $("#form_pagseguro input[name=senderHash]").val() );
 
     }
 
@@ -382,12 +383,12 @@ function process() {
 
             if (res) {
                 if (res['error']) {
-                    console.log(res, 'Error on process');
+                    console.log(res, 'Error on process function');
                     error = true;
                     processError(res['error']);
 
                 } else {
-                    console.log(res, 'Error on process');
+                    console.log(res, 'Error on process function');
                     onFinishPayment(res)
                 }
             } else {
@@ -463,12 +464,6 @@ function processError(error) {
 
 function filterError(code) {
 
-  if(!code){
-
-    alert('Ocorreu uma falha ao processar o pagamento. Por favor, tente mais tarde.')
-
-  }else{
-
     if (code == 10000 || code == 10001) {
         $('#cc_form input[name=cardNumber]').parent('.input-group').addClass('has-error');
     }
@@ -495,9 +490,10 @@ function filterError(code) {
         //window.token = null;
     }
 
-  }
     //53021 - sender phone invalid value
+
     console.log(code, 'filterError');
+
 }
 
 function errorAlert(content){

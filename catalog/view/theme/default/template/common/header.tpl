@@ -11,20 +11,37 @@ ob_end_clean();
 <!--[if (gt IE 9)|!(IE)]><!-->
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <!--<![endif]-->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $title; ?></title>
+  <title>
+    <?php echo $title; ?>
+  </title>
   <base href="<?php echo $base; ?>" />
-  <?php if ($description) { ?><meta name="description" content="<?php echo $description; ?>" /><?php } ?><?php if ($keywords) { ?><meta name="keywords" content="<?php echo $keywords; ?>" /><?php } ?><link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /><link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" /><link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
-  <?php foreach ($styles as $style) { ?><link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" /><?php } ?>
-  <?php foreach ($links as $link) { ?><link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" /><?php } ?>
+  <?php if ($description) { ?>
+  <meta name="description" content="<?php echo $description; ?>" />
+  <?php } ?>
+  <?php if ($keywords) { ?>
+  <meta name="keywords" content="<?php echo $keywords; ?>" />
+  <?php } ?>
+  <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+  <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+  <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+  <?php foreach ($styles as $style) { ?>
+  <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
+  <?php } ?>
+  <?php foreach ($links as $link) { ?>
+  <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
+  <?php } ?>
   <?php foreach ($analytics as $analytic) { ?>
   <?php echo $analytic; ?>
   <?php } ?>
 </head>
 <?php ob_flush(); ?>
+
 <body class="<?php echo $class; ?>">
   <nav id="top">
     <?php echo $currency; ?>
@@ -44,16 +61,16 @@ ob_end_clean();
                 <?php echo $text_order; ?>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="<?php echo $transaction; ?>">
                 <?php echo $text_transaction; ?>
               </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a href="<?php echo $download; ?>">
                 <?php echo $text_download; ?>
               </a>
-            </li>
+            </li> -->
             <li>
               <a href="<?php echo $logout; ?>">
                 <?php echo $text_logout; ?>
@@ -92,23 +109,22 @@ ob_end_clean();
           <?php } ?>
         </div>
       </div>
-      <div class="col-md-9 ">
-        <div class="col-sm-7 ">
+      <div class="col-md-9">
+        <div class="col-sm-7">
           <?php echo $search; ?>
         </div>
-        <div class="col-sm-4  ">
+        <div class="col-sm-5">
           <center>
             <?php echo $cart; ?>
           </center>
         </div>
-        <div class="col-sm-1 ">
-        <?php if ($logged) { ?>
-        <a href="<?php echo $logout; ?>"><i class="fa fa-sign-out" style="color:#FFB2DB; font-size:44px" aria-hidden="true"></i></a>
-        <?php } else { ?>
-        <a href="<?php echo $login; ?>"><i class="fa fa-sign-in" style="color:#FFB2DB; font-size:44px" aria-hidden="true"></i></a>
-        <?php } ?>
-
-        </div>
+        <!-- <div class="col-sm-1 ">
+          <?php if ($logged) { ?>
+          <a href="<?php echo $logout; ?>"><i class="fa fa-sign-out" style="color:#FFB2DB; font-size:44px" aria-hidden="true"></i></a>
+          <?php } else { ?>
+          <a href="<?php echo $login; ?>"><i class="fa fa-sign-in" style="color:#FFB2DB; font-size:44px" aria-hidden="true"></i></a>
+          <?php } ?>
+        </div> -->
       </div>
     </div>
   </header>
@@ -116,7 +132,7 @@ ob_end_clean();
   <?php if ($categories) { ?>
   <div style="background-color:#592B56">
     <nav id="menu" class="container navbar">
-      <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
+      <div class="navbar-header" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span id="category" style="line-height:45px" class="visible-xs"><?php echo "Menu"; ?></span>
         <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
       </div>
       <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -184,7 +200,7 @@ ob_end_clean();
     </div>
     <?php }else{ ?>
     <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
-       <!-- <i class="col-sm-4 fa fa-diamond hidden-xs2 " aria-hidden="true"></i>  -->
+      <!-- <i class="col-sm-4 fa fa-diamond hidden-xs2 " aria-hidden="true"></i>  -->
       <div id="login-info" class="col-sm-8 nopadding pull-right"><span>Olá, <?php echo $username ?><br /><a href="<?php echo $account; ?>"><?php echo $text_account ?></a> | <a href="<?php echo $logout; ?>">Sair</a></span></div>
     </div>
     <?php } ?>
