@@ -178,23 +178,23 @@ ob_end_clean();
   <?php } ?>
   <div id="home-info" class="container hide">
 
-    <!-- <div class="col-md-3 col-sm-4 col-xs-4 hidden-xs2 nopadding">
+    <div class="col-md-3 col-sm-4 col-xs-4 hidden-xs2 nopadding">
       <i class="col-sm-4 fa fa-credit-card hidden-xs2" aria-hidden="true"></i>
-      <div class="col-sm-8 nopadding"><strong>Pague em até 18x</strong><br /><span><a target="_blank" href="https://pagseguro.uol.com.br/para_voce/meios_de_pagamento_e_parcelamento.jhtml" >At&eacute; 18x no cart&atilde;o de cr&eacute;dito</a></span></div>
-    </div> -->
+      <div class="col-sm-8 nopadding"><strong>Até 18x</strong><br /><span><a target="_blank" href="https://pagseguro.uol.com.br/para_voce/meios_de_pagamento_e_parcelamento.jhtml" >No Cart&atilde;o de Cr&eacute;dito</a></span></div>
+    </div>
 
-    <div class="col-md-4 hidden-sm hidden-xs hidden-xs2 nopadding">
+    <div class="col-md-3 hidden-sm hidden-xs hidden-xs2 nopadding">
       <i class="col-sm-4 fa fa-facebook-official hidden-xs2" aria-hidden="true"></i>
       <div class="col-sm-8 nopadding"><strong>Facebook</strong><br /><span><a target="_blank" href="https://www.facebook.com/lojabalash/">Curta nossa p&aacute;gina</a></span></div>
     </div>
 
-    <div class="col-md-4 col-sm-4 col-xs-4  col-xs2-6 hidden-xs3 nopadding">
+    <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 hidden-xs3 nopadding">
       <i class="col-sm-4 fa fa-whatsapp hidden-xs2" aria-hidden="true"></i>
       <div class="col-sm-8 nopadding"><strong>Whatsapp</strong><br /><span><a href="tel:+5571987186507">(71) 98719 6507</a></span></div>
     </div>
 
     <?php if (!$logged) { ?>
-    <div class="col-md-4 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
+    <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
       <i class="col-sm-4 fa fa-sign-in hidden-xs2" aria-hidden="true"></i>
       <div class="col-sm-8 nopadding"><strong>Casdastre-se j&aacute;!</strong><br /><span><a href="<?php echo $login; ?>">Quero me cadastrar</a></span></div>
     </div>
