@@ -12,101 +12,6 @@ ob_end_clean();
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <!--<![endif]-->
 
-<<<<<<< HEAD
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-    <?php echo $title; ?>
-    </title>
-    <base href="<?php echo $base; ?>" />
-    <?php if ($description) { ?>
-    <meta name="description" content="<?php echo $description; ?>" />
-    <?php } ?>
-    <?php if ($keywords) { ?>
-    <meta name="keywords" content="<?php echo $keywords; ?>" />
-    <?php } ?>
-    <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
-    <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
-    <?php foreach ($styles as $style) { ?>
-    <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
-    <?php } ?>
-    <?php foreach ($links as $link) { ?>
-    <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
-    <?php } ?>
-    <?php foreach ($analytics as $analytic) { ?>
-    <?php echo $analytic; ?>
-    <?php } ?>
-  </head>
-  <?php ob_flush(); ?>
-  <?php ?>
-  <body class="<?php echo $class; ?>">
-    <datalist id='scripts'><?php foreach ($scripts as $script) { ?><option value="<?php echo $script; ?>"></option><?php } ?><option value="catalog/view/javascript/common.js"></option></datalist>
-    <nav id="top">
-      <?php echo $currency; ?>
-      <?php echo $language; ?>
-      <div id="top-links" class="nav pull-right">
-        <ul class="list-inline">
-          <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-diamond"></i> <span class="hidden-xs"><?php echo $text_account; ?></span> <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <?php if ($logged) { ?>
-              <li>
-                <a href="<?php echo $account; ?>">
-                  <?php echo $text_account; ?>
-                </a>
-              </li>
-              <li>
-                <a href="<?php echo $order; ?>">
-                  <?php echo $text_order; ?>
-                </a>
-              </li>
-              <li>
-                <a href="<?php echo $transaction; ?>">
-                  <?php echo $text_transaction; ?>
-                </a>
-              </li>
-              <li>
-                <a href="<?php echo $download; ?>">
-                  <?php echo $text_download; ?>
-                </a>
-              </li>
-              <li>
-                <a href="<?php echo $logout; ?>">
-                  <?php echo $text_logout; ?>
-                </a>
-              </li>
-              <?php } else { ?>
-              <li>
-                <a href="<?php echo $register; ?>">
-                  <?php echo $text_register; ?>
-                </a>
-              </li>
-              <li>
-                <a href="<?php echo $login; ?>">
-                  <?php echo $text_login; ?>
-                </a>
-              </li>
-              <?php } ?>
-            </ul>
-          </li>
-          <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs"><?php echo $text_wishlist; ?></span></a></li>
-          <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-bag"></i> <span class="hidden-xs"><?php echo $text_shopping_cart; ?></span></a></li>
-          <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs"><?php echo $text_checkout; ?></span></a></li>
-        </ul>
-      </div>
-      <!-- </div> -->
-    </nav>
-
-    <header>
-      <div class="container">
-        <div class="col-md-3">
-          <div id="logo">
-            <?php if ($logo) { ?>
-            <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-=======
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -171,7 +76,6 @@ ob_end_clean();
                 <?php echo $text_logout; ?>
               </a>
             </li>
->>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
             <?php } else { ?>
             <li>
               <a href="<?php echo $login; ?>">
@@ -279,20 +183,6 @@ ob_end_clean();
       <div class="col-sm-8 nopadding"><strong>Até 18x</strong><br /><span><a target="_blank" href="https://pagseguro.uol.com.br/para_voce/meios_de_pagamento_e_parcelamento.jhtml" >No Cart&atilde;o de Cr&eacute;dito</a></span></div>
     </div>
 
-<<<<<<< HEAD
-      <?php if (!$logged) { ?>
-      <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
-        <i class="col-sm-4 fa fa-sign-in hidden-xs2" aria-hidden="true"></i>
-        <div class="col-sm-8 nopadding"><strong>Casdastre-se já!</strong><br /><span><a href="<?php echo $login; ?>">Acesse sua conta</a></span></div>
-      </div>
-      <?php }else{ ?>
-      <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
-         <!-- <i class="col-sm-4 fa fa-diamond hidden-xs2 " aria-hidden="true"></i>  -->
-        <div id="login-info" class="col-sm-8 nopadding pull-right"><span>Olá, <?php echo $username ?><br /><a href="<?php echo $account; ?>"><?php echo $text_account ?></a> | <a href="<?php echo $logout; ?>">Sair</a></span></div>
-      </div>
-      <?php } ?>
-    </div>
-=======
     <div class="col-md-3 hidden-sm hidden-xs hidden-xs2 nopadding">
       <i class="col-sm-4 fa fa-facebook-official hidden-xs2" aria-hidden="true"></i>
       <div class="col-sm-8 nopadding"><strong>Facebook</strong><br /><span><a target="_blank" href="https://www.facebook.com/lojabalash/">Curta nossa p&aacute;gina</a></span></div>
@@ -315,4 +205,3 @@ ob_end_clean();
     </div>
     <?php } ?>
   </div>
->>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
