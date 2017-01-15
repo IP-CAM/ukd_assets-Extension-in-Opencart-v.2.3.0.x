@@ -34,8 +34,12 @@ foreach ($_POST as $key => $value) {
         $data[$key] = $value;
     }
 }
+<<<<<<< HEAD
 // $data['email'] = 'fredukita@gmail.com';
 // $data['token'] = '9E7583A0AB8F44EC9E6D72FB81C4693F';
+=======
+
+>>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
 $url = $data['transactions_url'].'?'.http_build_query($data, '', '&amp;');
 $charset = 'ISO-8859-1';
 $postFields = ($data ? http_build_query($data, '', '&') : "");
@@ -75,7 +79,10 @@ $finfo = new finfo(FILEINFO_MIME);
 
 $status = $info['http_code'];
 
+<<<<<<< HEAD
 ob_end_clean();
+=======
+>>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
 header('Content-Type: application/json');
 
 if ($error || strpos($finfo->buffer($resp), 'application/xml') == -1) {
@@ -84,6 +91,10 @@ if ($error || strpos($finfo->buffer($resp), 'application/xml') == -1) {
     //$xml = simplexml_load_string($resp);
     if ($resp != 'Unauthorized') {
         $xml = simplexml_load_string($resp);
+<<<<<<< HEAD
+=======
+        $xml['status'] = $status;
+>>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
         exit(json_encode($xml));
     } else {
         exit(json_encode(array('error' => $resp)));

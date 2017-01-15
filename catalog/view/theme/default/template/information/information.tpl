@@ -14,8 +14,8 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
+      <h1><?php echo $heading_title; ?></h1><br />
       <?php echo $description; ?><?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+    <?php echo $column_right; ?><br /></div>
 </div>
 <?php echo $footer; ?>

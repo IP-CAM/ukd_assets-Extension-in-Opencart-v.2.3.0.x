@@ -155,9 +155,15 @@ $i++;
 }
 ?>
 
+<<<<<<< HEAD
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
 <!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
 <input name="reference" type="hidden" value="" /> -->
+=======
+<!-- <input name="notificationURL" type="hidden" value="" /> -->
+<!-- <input name="redirectURL" type="hidden" value="" />-->
+<input name="reference" type="hidden" value="REF<?php echo $order_id ?>" />
+>>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
 <input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
@@ -180,7 +186,7 @@ var validate = function() {};
 var startPayment = function() {};
 var onFinishPayment = function() {};
 
-$('#button-confirm').attr('disabled', true);
+$('#button-confirm').button('loading');
 
 $('#processModal').modal({
     backdrop: 'static',
@@ -326,7 +332,7 @@ function getPaymentMethodsCallback(res) {
     if (pagseguro_method == 'boleto') {
 
         if (res['paymentMethods']['BOLETO']['options']['BOLETO']['status'] == 'AVAILABLE') {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
         } else {
             alert('Pagamento via Boleto Bancário temporariamente indisponível.');
         }
@@ -336,7 +342,7 @@ function getPaymentMethodsCallback(res) {
         window.options = res['paymentMethods']['CREDIT_CARD']['options'];
 
         if (window.options) {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
             //init_cc();
         } else {
             alert('Pagamento via Cartão de Crédito está temporariamente indisponível.');
@@ -347,13 +353,19 @@ function getPaymentMethodsCallback(res) {
         window.options = res['paymentMethods']['ONLINE_DEBIT']['options'];
 
         if (window.options) {
-            $('#button-confirm').attr('disabled', false);
+            $('#button-confirm').button('reset');
             init_eft();
         } else {
             alert('Pagamento via Débito Online está temporariamente indisponível.');
         }
 
-    } else {
+    }else if (pagseguro_method == 'db') {
+
+
+            $('#button-confirm').button('reset');
+
+    }
+     else {
 
         alert('Gateway de pagamento está temporariamente indisponível.');
 

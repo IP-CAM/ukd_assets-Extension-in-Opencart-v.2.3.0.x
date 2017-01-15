@@ -3,19 +3,23 @@
   <?php echo $text_payment_method; ?>
 </p>
 
-<div class="container col-sm-12 ">
+<div class="container col-sm-12">
   <div class="row">
-    <div class="col-sm-4 funkyradio-primary funkyradio" title="Boleto Bancário">
-      <input type="radio" name="pagseguro_method" id="blt" value="boleto" checked="checked" />
-      <label for="blt">Boleto Bancário</label>
-    </div>
-    <div class="col-sm-4 funkyradio-primary funkyradio" title="Cartão de Crédito">
-      <input type="radio" name="pagseguro_method" id="cc" value="creditCard" />
+    <div class="col-sm-6 funkyradio-primary funkyradio" title="Cartão de Crédito">
+      <input type="radio" name="pagseguro_method" id="cc" value="creditCard" checked="checked" />
       <label for="cc">Cartão de Crédito</label>
     </div>
-    <div class="col-sm-4 funkyradio-primary funkyradio" title="Débito Online">
+    <div class="col-sm-6 funkyradio-primary funkyradio" title="Boleto Bancário">
+      <input type="radio" name="pagseguro_method" id="blt" value="boleto"  />
+      <label for="blt">Boleto Bancário</label>
+    </div>
+    <div class="col-sm-6 funkyradio-primary funkyradio" title="Débito Online">
       <input type="radio" name="pagseguro_method" id="tt" value='eft' />
       <label for="tt">Débito Online</label>
+    </div>
+    <div class="col-sm-6 funkyradio-primary funkyradio" title="Depósito Bancário">
+      <input type="radio" name="pagseguro_method" id="db" value='db' />
+      <label for="db">Depósito Bancário</label>
     </div>
   </div>
 
@@ -54,6 +58,12 @@ if(!window.pagseguro_method){
 $('#collapse-payment-method input[name=pagseguro_method]').click(function(event) {
 
   window.pagseguro_method = $(this).val();
+
+  // $.ajax({
+  //   url: 'register_payment_method.php?method=' + $(this).val(),
+  //   type: 'GET'
+  // })
+
 
 });
 

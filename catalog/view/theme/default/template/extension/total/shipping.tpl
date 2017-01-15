@@ -42,11 +42,13 @@
         window.ukd_fn = window.ukd_fn || [];
         window.ukd_fn.push(function() {
 
-          require(["mask"], function() {
+          // require(["mask"], function() {
+          //
+          //     $('input[name=postcode]').mask('00000000', {placeholder: "Somente números. Ex.: 01031970"});
+          //
+          // });
 
-              $('input[name=postcode]').mask('00000000', {placeholder: "Somente números. Ex.: 01031970"});
-
-          });
+          $('input[name=address]').prop('placeholder', 'Ex.: Rua Beltrano da Silva, 123');
 
           $('select[name=\'zone_id\']').change(function(event) {
 

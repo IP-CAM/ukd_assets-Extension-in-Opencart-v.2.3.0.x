@@ -496,6 +496,14 @@ class ControllerAccountReturn extends Controller {
 
 		$data['return_reasons'] = $this->model_localisation_return_reason->getReturnReasons();
 
+		$data['translate_reason'] = ['Ainda não recebi o pedido', 'Recebi itens errados', 'Recebi o pedido errado','Recebi o produto com defeito','Outra'];
+
+		// 1 - Dead On Arrival
+		// 4 - Faulty, please supply details
+		// 3 - Order Error
+		// 5 - Other, please supply details
+		// 2 - Received Wrong Item
+
 		if (isset($this->request->post['comment'])) {
 			$data['comment'] = $this->request->post['comment'];
 		} else {

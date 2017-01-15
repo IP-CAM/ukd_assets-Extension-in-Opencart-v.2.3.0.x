@@ -10,7 +10,7 @@ $_['text_edit']              = 'Editando departamento';
 $_['text_default']           = 'Padrão';
 
 // Column
-$_['column_name']            = 'Departamento';
+$_['column_name']            = 'Menu';
 $_['column_sort_order']      = 'Posição';
 $_['column_action']          = 'Ação';
 

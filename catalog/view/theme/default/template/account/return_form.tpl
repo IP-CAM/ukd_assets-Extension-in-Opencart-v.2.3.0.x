@@ -109,14 +109,15 @@
               <?php if ($return_reason['return_reason_id'] == $return_reason_id) { ?>
               <div class="radio">
                 <label>
-                  <input type="radio" name="return_reason_id" value="<?php echo $return_reason['return_reason_id']; ?>" checked="checked" />
-                  <?php echo $return_reason['name']; ?></label>
+                  <input type="radio" name="return_reason_id" value="<?php echo $return_reason['return_reason_id']; ?>" />
+                  <?php echo $translate_reason[$return_reason['return_reason_id']-1]; ?></label>
               </div>
               <?php } else { ?>
               <div class="radio">
                 <label>
-                  <input type="radio" name="return_reason_id" value="<?php echo $return_reason['return_reason_id']; ?>" />
-                  <?php echo $return_reason['name']; ?></label>
+                  <label>
+                    <input type="radio" name="return_reason_id" value="<?php echo $return_reason['return_reason_id']; ?>" />
+                    <?php echo $translate_reason[$return_reason['return_reason_id']-1]; ?></label>
               </div>
               <?php  } ?>
               <?php  } ?>
@@ -177,8 +178,11 @@
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
+window.ukd_fn = window.ukd_fn || [];
+window.ukd_fn.push(function() {
 $('.date').datetimepicker({
 	pickTime: false
+});
 });
 //--></script>
 <?php echo $footer; ?>

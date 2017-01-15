@@ -38,6 +38,8 @@ class ControllerExtensionPaymentUkdPagseguro extends Controller
         $data['payment_method'] = $this->session->data['payment_method'];
         $data['payment_address'] = $this->session->data['payment_address'];
 
+        $data['order_id'] = $this->session->data['order_id'];
+
         return $this->load->view('extension/payment/ukd_pagseguro', $data);
     }
 

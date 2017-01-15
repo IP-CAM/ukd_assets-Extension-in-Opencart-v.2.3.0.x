@@ -40,7 +40,7 @@ require_once '../security.php';
   <div class="panel-heading">DÉBITO ONLINE</div>
   <div class="panel-body" style="margin-bottom:15px">
     <div>
-    Selecione seu Banco para pagamento.
+    Selecione o Banco para pagamento.
     </div>
     <div id="eft_options"><p><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="font-size:48px;color:#ccc"></i></center></p></div>
   </div>
@@ -101,9 +101,10 @@ function validate(){
 
 function onFinishPayment(res){
 
-  // var win = window.open(res['paymentLink'], '_blank');
-  // if(win)win.focus();
-    window.location = locationURL + '&eft=' + res['paymentLink'];
+    //window.location = locationURL + '&eft=' + res['paymentLink'];
+
+    var link =  res['paymentLink'].split('?c=');
+    window.location = locationURL + '&type=eft&link=' + link[0] + '&code=' + link[1];
 
 }
 
