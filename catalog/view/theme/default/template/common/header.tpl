@@ -1,7 +1,8 @@
 <?php
 //ukd_25c60571
-ob_implicit_flush (1);
-ob_end_flush();
+// phpinfo(); exit;
+ob_implicit_flush(1);
+ob_end_clean();
 ?>
   <!DOCTYPE html>
   <!--[if IE]><![endif]-->
@@ -16,7 +17,7 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-      <?php echo $title; ?>
+    <?php echo $title; ?>
     </title>
     <base href="<?php echo $base; ?>" />
     <?php if ($description) { ?>
@@ -25,36 +26,29 @@ ob_end_flush();
     <?php if ($keywords) { ?>
     <meta name="keywords" content="<?php echo $keywords; ?>" />
     <?php } ?>
-
     <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <!-- <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
     <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
     <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
     <?php foreach ($styles as $style) { ?>
     <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
     <?php } ?>
-    <!-- <script src="catalog/view/javascript/common.js" type="text/javascript"></script> -->
     <?php foreach ($links as $link) { ?>
     <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
     <?php } ?>
-
     <?php foreach ($analytics as $analytic) { ?>
     <?php echo $analytic; ?>
     <?php } ?>
   </head>
+  <?php ob_flush(); ?>
   <?php ?>
-
   <body class="<?php echo $class; ?>">
     <datalist id='scripts'><?php foreach ($scripts as $script) { ?><option value="<?php echo $script; ?>"></option><?php } ?><option value="catalog/view/javascript/common.js"></option></datalist>
     <nav id="top">
-      <!-- <div class="container"> -->
       <?php echo $currency; ?>
       <?php echo $language; ?>
-
       <div id="top-links" class="nav pull-right">
         <ul class="list-inline">
-
           <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-diamond"></i> <span class="hidden-xs"><?php echo $text_account; ?></span> <span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-right">
               <?php if ($logged) { ?>
@@ -201,7 +195,6 @@ ob_end_flush();
         <div class="col-sm-8 nopadding"><strong>Whatsapp</strong><br /><span><a href="tel:+5571987186507">(71) 98719 6507</a></span></div>
       </div>
 
-
       <?php if (!$logged) { ?>
       <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
         <i class="col-sm-4 fa fa-sign-in hidden-xs2" aria-hidden="true"></i>
@@ -213,5 +206,4 @@ ob_end_flush();
         <div id="login-info" class="col-sm-8 nopadding pull-right"><span>Olá, <?php echo $username ?><br /><a href="<?php echo $account; ?>"><?php echo $text_account ?></a> | <a href="<?php echo $logout; ?>">Sair</a></span></div>
       </div>
       <?php } ?>
-
     </div>

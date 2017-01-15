@@ -156,9 +156,9 @@ $i++;
 ?>
 
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
-<input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
-<input name="reference" type="hidden" value="" />
-
+<!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
+<input name="reference" type="hidden" value="" /> -->
+<input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
 <script type="text/javascript">
@@ -166,7 +166,6 @@ $i++;
 //console.log('<?php echo $continue; ?>');
 
 var img_url = '<?php echo $img_url ?>';
-var transactions_url = '<?php echo $transactions ?>';
 var locationURL = '<?php echo $continue; ?>';
 var directpayment = '<?php echo $directpayment ?>';
 var amount = '<?php echo number_format( $total + $shipping_method['cost'], 2, '.', '' ) ?>';
@@ -370,11 +369,13 @@ function process() {
 
       $("#form_pagseguro input[name=senderHash]").val(PagSeguroDirectPayment.getSenderHash());
 
+      console.log('senderHash:', $("#form_pagseguro input[name=senderHash]").val() );
+
     }
 
     $.ajax({
         type: "POST",
-        url: "catalog/view/ukd_assets/php/checkout/process.php?url=" + transactions_url,
+        url: "catalog/view/ukd_assets/php/checkout/process.php",
         data: $("#form_pagseguro").serialize(),
         dataType: "json",
         cache: false,
@@ -398,6 +399,7 @@ function process() {
         error: function(jqxhr) {
 
             alert(jqxhr.resonseText);
+            console.log('process error', jqxhr);
 
         },
         complete: function() {
