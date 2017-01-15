@@ -6,9 +6,16 @@ class ControllerCheckoutSuccess extends Controller
     {
         $this->load->language('checkout/success');
 
-        $data['permanent_link'] = $_GET['link'].'?c='.$_GET['code'];
 
-        $payment_type = $_GET['type'];
+        if( isset($_GET['link'])){
+          $data['permanent_link'] = $_GET['link'].'?c='.$_GET['code'];
+          $payment_type = $_GET['type'];
+
+        }else{
+          $data['permanent_link'] = '';
+          $payment_type = '';
+
+        }
 
         if ($payment_type == 'boleto') {
             $data['button_text'] = 'Gerar boleto';

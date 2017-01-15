@@ -59,8 +59,7 @@
               <td class="text-left">
                 <?php echo $order['status']; ?>
               </td>
-              <td class="text-left" id="<?php echo $order['order_id'] ?>" data-link="<?php echo $order['link'] ?>">
-                <?php echo 'carregando...'; ?>
+              <td class="text-left" id="<?php echo $order['order_id'] ?>" data-link="<?php echo $order['link'] ?>">                
               </td>
               <td class="text-right">
                 <?php echo $order['total']; ?>
@@ -91,38 +90,46 @@
                       //   var name = $(this).find("name").text()
                       //   alert(name);
                       // });
+                      if (json['transactions']) {
 
-                      var link = $('#' + ref).data('link');
-                      var status = json['transactions']['transaction']['status'];
-                      var paymentMethod = json['transactions']['transaction']['paymentMethod']['type'];
-                      var title = ['', '<span style="color:orangered">Pagamento pendente <i class="fa fa-exclamation-circle"></i></span></span>', 'Em análise', '<span style="color:SeaGreen">Pago <i class="fa fa-check"></i></span>','Disponível', '<span>Em disputa <i class="fa fa-warning"></i></span>', '<span>Devolvido <i class="fa fa-reply"></i></span>', '<span>Cancelado <i class=" fa fa-remove"></i></span>'
-                      ];
+                        var link = $('#' + ref).data('link');
+                        var status = json['transactions']['transaction']['status'];
+                        var paymentMethod = json['transactions']['transaction']['paymentMethod']['type'];
+                        var title = ['', '<span style="color:orangered">Pagamento pendente <i class="fa fa-exclamation-circle"></i></span></span>', 'Em análise', '<span style="color:SeaGreen">Pago <i class="fa fa-check"></i></span>',
+                          'Disponível', '<span>Em disputa <i class="fa fa-warning"></i></span>', '<span>Devolvido <i class="fa fa-reply"></i></span>', '<span>Cancelado <i class=" fa fa-remove"></i></span>'
+                        ];
 
-                      if (status == 1) {
-                        btn.attr("href", btn.data('link') + '&paynow=' + title[status]);
-                        col.append(' <a class="btn btn-secondary" target="_blank" href="' + link + '">Pagar agora</a>');
-                      } else if (status == 2 || status == 3) {
-                        btn.attr("href", btn.data('link') + '&paid=' + title[status]);
-                      } else if (status == 4) {
-                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
-                      } else if (status == 5) {
-                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
-                      } else if (status == 6) {
-                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
-                      } else if (status == 7) {
-                        btn.attr("href", btn.data('link') + '&info=' + title[status]);
-                      }
+                        if (status == 1) {
+                          btn.attr("href", btn.data('link') + '&paynow=' + title[status]);
+                          col.append(' <a class="btn btn-secondary" target="_blank" href="' + link + '">Pagar agora</a>');
+                        } else if (status == 2 || status == 3) {
+                          btn.attr("href", btn.data('link') + '&paid=' + title[status]);
+                        } else if (status == 4) {
+                          btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                        } else if (status == 5) {
+                          btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                        } else if (status == 6) {
+                          btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                        } else if (status == 7) {
+                          btn.attr("href", btn.data('link') + '&info=' + title[status]);
+                        }
 
 
-                      if (paymentMethod == 1 && status == 1) {
+                        if (paymentMethod == 1 && status == 1) {
 
-                        $('#' + ref).html(title[2]);
+                          $('#' + ref).html(title[2]);
 
+                        } else {
+                          $('#' + ref).html(title[status]);
+                        }
+
+                        console.log(json);
                       } else {
-                        $('#' + ref).html(title[status]);
-                      }
 
-                      console.log(json);
+                        btn.attr("href", btn.data('link') );
+                        $('#' + ref).html('');
+
+                      }
                     }
                   });
 

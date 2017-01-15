@@ -155,9 +155,9 @@ $i++;
 }
 ?>
 
-<!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
-<!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
-<input name="reference" type="hidden" value="" /> -->
+<!-- <input name="notificationURL" type="hidden" value="" /> -->
+<!-- <input name="redirectURL" type="hidden" value="" />-->
+<input name="reference" type="hidden" value="REF<?php echo $order_id ?>" />
 <input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
@@ -353,7 +353,13 @@ function getPaymentMethodsCallback(res) {
             alert('Pagamento via Débito Online está temporariamente indisponível.');
         }
 
-    } else {
+    }else if (pagseguro_method == 'db') {
+
+
+            $('#button-confirm').button('reset');
+
+    }
+     else {
 
         alert('Gateway de pagamento está temporariamente indisponível.');
 

@@ -8,16 +8,16 @@ class ControllerCheckoutPaymentMethod extends Controller
 
         if (isset($this->session->data['payment_address'])) {
             // Totals
-			$totals = array();
+            $totals = array();
             $taxes = $this->cart->getTaxes();
             $total = 0;
 
-			// Because __call can not keep var references so we put them into an array.
-			$total_data = array(
-				'totals' => &$totals,
-				'taxes' => &$taxes,
-				'total' => &$total,
-			);
+            // Because __call can not keep var references so we put them into an array.
+            $total_data = array(
+              'totals' => &$totals,
+              'taxes' => &$taxes,
+              'total' => &$total
+            );
 
             $this->load->model('extension/extension');
 
@@ -35,13 +35,13 @@ class ControllerCheckoutPaymentMethod extends Controller
                 if ($this->config->get($result['code'].'_status')) {
                     $this->load->model('extension/total/'.$result['code']);
 
-					// We have to put the totals in an array so that they pass by reference.
-					$this->{'model_extension_total_'.$result['code']}->getTotal($total_data);
+                    // We have to put the totals in an array so that they pass by reference.
+                    $this->{'model_extension_total_'.$result['code']}->getTotal($total_data);
                 }
             }
 
-			// Payment Methods
-			$method_data = array();
+            // Payment Methods
+            $method_data = array();
 
             $this->load->model('extension/extension');
 
@@ -139,18 +139,18 @@ class ControllerCheckoutPaymentMethod extends Controller
 
         $json = array();
 
-		// Validate if payment address has been set.
-		if (!isset($this->session->data['payment_address'])) {
-		    $json['redirect'] = $this->url->link('checkout/checkout', '', true);
-		}
+        // Validate if payment address has been set.
+        if (!isset($this->session->data['payment_address'])) {
+            $json['redirect'] = $this->url->link('checkout/checkout', '', true);
+        }
 
-		// Validate cart has products and has stock.
-		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-		    $json['redirect'] = $this->url->link('checkout/cart');
-		}
+        // Validate cart has products and has stock.
+        if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+            $json['redirect'] = $this->url->link('checkout/cart');
+        }
 
-		// Validate minimum quantity requirements.
-		$products = $this->cart->getProducts();
+        // Validate minimum quantity requirements.
+        $products = $this->cart->getProducts();
 
         foreach ($products as $product) {
             $product_total = 0;
@@ -193,6 +193,8 @@ class ControllerCheckoutPaymentMethod extends Controller
                 $pagseguro_method = 'Débito Online';
             } elseif ($pagseguro_method == 'boleto') {
                 $pagseguro_method = 'Boleto Bancário';
+            } elseif ($pagseguro_method == 'db') {
+                $pagseguro_method = 'Depósito Bancário';
             } else {
                 $pagseguro_method = 'Cartão de Crédito';
             }

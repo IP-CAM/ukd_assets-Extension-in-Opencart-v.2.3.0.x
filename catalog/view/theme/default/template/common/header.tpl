@@ -78,13 +78,13 @@ ob_end_clean();
             </li>
             <?php } else { ?>
             <li>
-              <a href="<?php echo $register; ?>">
-                <?php echo $text_register; ?>
+              <a href="<?php echo $login; ?>">
+                <?php echo $text_login; ?>
               </a>
             </li>
             <li>
-              <a href="<?php echo $login; ?>">
-                <?php echo $text_login; ?>
+              <a href="<?php echo $register; ?>">
+                <?php echo $text_register; ?>
               </a>
             </li>
             <?php } ?>
@@ -178,28 +178,28 @@ ob_end_clean();
   <?php } ?>
   <div id="home-info" class="container hide">
 
-    <div class="col-md-3 col-sm-4 col-xs-4 hidden-xs2 nopadding">
-      <i class="col-sm-4 fa fa-truck hidden-xs2" aria-hidden="true"></i>
-      <div class="col-sm-8 nopadding"><strong>Frete grátis</strong><br /><span><a href="#">Veja as condições aqui</a></span></div>
-    </div>
+    <!-- <div class="col-md-3 col-sm-4 col-xs-4 hidden-xs2 nopadding">
+      <i class="col-sm-4 fa fa-credit-card hidden-xs2" aria-hidden="true"></i>
+      <div class="col-sm-8 nopadding"><strong>Pague em até 18x</strong><br /><span><a target="_blank" href="https://pagseguro.uol.com.br/para_voce/meios_de_pagamento_e_parcelamento.jhtml" >At&eacute; 18x no cart&atilde;o de cr&eacute;dito</a></span></div>
+    </div> -->
 
-    <div class="col-md-3 hidden-sm hidden-xs hidden-xs2 nopadding">
+    <div class="col-md-4 hidden-sm hidden-xs hidden-xs2 nopadding">
       <i class="col-sm-4 fa fa-facebook-official hidden-xs2" aria-hidden="true"></i>
-      <div class="col-sm-8 nopadding"><strong>Facebook</strong><br /><span><a href="#">Curta nossa página</a></span></div>
+      <div class="col-sm-8 nopadding"><strong>Facebook</strong><br /><span><a target="_blank" href="https://www.facebook.com/lojabalash/">Curta nossa p&aacute;gina</a></span></div>
     </div>
 
-    <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 hidden-xs3 nopadding">
+    <div class="col-md-4 col-sm-4 col-xs-4  col-xs2-6 hidden-xs3 nopadding">
       <i class="col-sm-4 fa fa-whatsapp hidden-xs2" aria-hidden="true"></i>
       <div class="col-sm-8 nopadding"><strong>Whatsapp</strong><br /><span><a href="tel:+5571987186507">(71) 98719 6507</a></span></div>
     </div>
 
     <?php if (!$logged) { ?>
-    <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
+    <div class="col-md-4 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
       <i class="col-sm-4 fa fa-sign-in hidden-xs2" aria-hidden="true"></i>
-      <div class="col-sm-8 nopadding"><strong>Casdastre-se já!</strong><br /><span><a href="<?php echo $login; ?>">Acesse sua conta</a></span></div>
+      <div class="col-sm-8 nopadding"><strong>Casdastre-se j&aacute;!</strong><br /><span><a href="<?php echo $login; ?>">Quero me cadastrar</a></span></div>
     </div>
     <?php }else{ ?>
-    <div class="col-md-3 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
+    <div class="col-md-4 col-sm-4 col-xs-4  col-xs2-6 col-xs3-12 nopadding">
       <!-- <i class="col-sm-4 fa fa-diamond hidden-xs2 " aria-hidden="true"></i>  -->
       <div id="login-info" class="col-sm-8 nopadding pull-right"><span>Olá, <?php echo $username ?><br /><a href="<?php echo $account; ?>"><?php echo $text_account ?></a> | <a href="<?php echo $logout; ?>">Sair</a></span></div>
     </div>

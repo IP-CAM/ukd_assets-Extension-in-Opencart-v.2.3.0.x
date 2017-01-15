@@ -66,6 +66,7 @@
           </tr>
         </tbody>
       </table>
+
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -229,9 +230,9 @@
             }else{
               if( isset($_GET['info']) ) {
                 echo $_GET['info'];
-              }else{
+              }else if( isset($_GET['paynow'])){
                 echo $_GET['paynow'];
-              }
+              }else echo $history['status'];
             }
             ?>
             </td>
@@ -239,10 +240,12 @@
               <?php echo $history['comment']; ?>
             </td>
             <td class="text-left">
-              <?php if( isset($_GET['paynow']) )echo '<a class="btn btn-secondary" target="_blank" href="'.trim($_GET['link'],"'").'">Pagar agora</a>' ?></td>
+              <?php if( isset($_GET['paynow']) ) { ?>
+              <a class="btn btn-secondary" target="_blank" href="<?php echo trim($_GET['link'],'\'') ?>">Pagar agora</a>'</td>
+              <?php  } ?>
 
           </tr>
-          <?php break; } ?>
+          <?php  } ?>
           <?php } else { ?>
           <tr>
             <td colspan="3" class="text-center">
@@ -252,6 +255,29 @@
           <?php } ?>
         </tbody>
       </table>
+      <?php } ?>
+
+      <?php if($payment_method == 'Depósito Bancário' && $history['status'] == 'Pendente') { ?>
+      <div style="padding: 20px">
+      <div class="alert alert-warning">
+      Por favor, faça o depósito em uma das contas abaixo e envie o comprovante para o email <strong>vendas@balash.com.br</strong>
+      </div>
+      <div class="col-sm-6" style="padding:20px">
+        <strong>BANCO DO BRASIL</strong><br />
+        Agência: 3460-6<br />
+        Conta Corrente: 30.035-7<br />
+        Nome: Frederico Ukita<br />
+        CPF: 964.565.905-15<br />
+      </div>
+      <div class="col-sm-6" style="padding:20px">
+        <strong>CAIXA ECONÔMICA FEDERAL</strong><br />
+        Agência: 1051<br />
+        Conta Poupança: 82.371-9<br />
+        Código de Operação: 013<br />
+        Nome: Frederico Ukita<br />
+        CPF: 964.565.905-15<br />
+      </div>
+      </div>
       <?php } ?>
       <div class="buttons clearfix">
         <div class="pull-right">

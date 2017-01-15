@@ -31,7 +31,7 @@
         </div>
 
         <?php
-        if(isset($permanent_link)):
+        if( isset($button_text) ):
         ?>
         <div class="pull-left">
           <a id="btn_pagseguro" href="<?php echo $permanent_link ?>" target="_blank" class="btn btn-success btn-lg" disabled>
