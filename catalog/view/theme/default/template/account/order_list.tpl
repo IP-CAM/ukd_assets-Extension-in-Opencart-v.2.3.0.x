@@ -59,7 +59,7 @@
               <td class="text-left">
                 <?php echo $order['status']; ?>
               </td>
-              <td class="text-left" id="<?php echo $order['order_id'] ?>" data-link="<?php echo $order['link'] ?>">                
+              <td class="text-left" id="<?php echo $order['order_id'] ?>" data-link="<?php echo $order['link'] ?>">
               </td>
               <td class="text-right">
                 <?php echo $order['total']; ?>
@@ -67,7 +67,7 @@
               <td class="text-left">
                 <?php echo $order['date_added']; ?>
               </td>
-              <td class="text-left" id="col_<?php echo $order['order_id'] ?>"><a id="btn_<?php echo $order['order_id'] ?>" data-link="<?php echo $order['view']; ?>&link='<?php echo $order['link'] ?>'" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+              <td class="text-left" id="col_<?php echo $order['order_id'] ?>"><a id="btn_<?php echo $order['order_id'] ?>" href="<?php echo $order['view']; ?>&link='<?php echo $order['link'] ?>'" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
             <script>
               window.ukd_fn = window.ukd_fn || [];
@@ -95,7 +95,7 @@
                         var link = $('#' + ref).data('link');
                         var status = json['transactions']['transaction']['status'];
                         var paymentMethod = json['transactions']['transaction']['paymentMethod']['type'];
-                        var title = ['', '<span style="color:orangered">Pagamento pendente <i class="fa fa-exclamation-circle"></i></span></span>', 'Em análise', '<span style="color:SeaGreen">Pago <i class="fa fa-check"></i></span>',
+                        var title = ['', '<span style="color:orangered">pendente <i class="fa fa-exclamation-circle"></i></span></span>', 'Em análise', '<span style="color:SeaGreen">Pago <i class="fa fa-check"></i></span>',
                           'Disponível', '<span>Em disputa <i class="fa fa-warning"></i></span>', '<span>Devolvido <i class="fa fa-reply"></i></span>', '<span>Cancelado <i class=" fa fa-remove"></i></span>'
                         ];
 
@@ -126,11 +126,17 @@
                         console.log(json);
                       } else {
 
-                        btn.attr("href", btn.data('link') );
+                        btn.attr("href", btn.data('link'));
                         $('#' + ref).html('');
 
                       }
+                    },
+                    error: function(json) {
+
+                      console.log(json.responseText);
+
                     }
+
                   });
 
                 }
@@ -156,7 +162,7 @@
       <div class="buttons clearfix">
         <div class="pull-right">
           <a href="<?php echo $continue; ?>" class="btn btn-primary">
-            <?php echo $button_continue; ?>
+            <?php echo $button_back; ?>
           </a>
         </div>
       </div>

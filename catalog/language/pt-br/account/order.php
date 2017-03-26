@@ -35,3 +35,6 @@ $_['column_comment']        = 'Comentário';
 
 // Error
 $_['error_reorder']         = '%s não está disponível em nosso estoque.';
+
+// button
+$_['button_back']            = 'Voltar';

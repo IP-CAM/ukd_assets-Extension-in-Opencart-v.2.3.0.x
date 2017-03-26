@@ -260,7 +260,7 @@
       <?php if($payment_method == 'Depósito Bancário' && $history['status'] == 'Pendente') { ?>
       <div style="padding: 20px">
       <div class="alert alert-warning">
-      Por favor, faça o depósito em uma das contas abaixo e envie o comprovante para o email <strong>vendas@balash.com.br</strong>
+      Por favor, faça o depósito em uma das contas abaixo e envie o comprovante para o email <a href="mailto:vendas@balash.com.br"><strong>vendas@balash.com.br</strong></a>
       </div>
       <div class="col-sm-6" style="padding:20px">
         <strong>BANCO DO BRASIL</strong><br />
@@ -282,7 +282,7 @@
       <div class="buttons clearfix">
         <div class="pull-right">
           <a href="<?php echo $continue; ?>" class="btn btn-primary">
-            <?php echo $button_continue; ?>
+            <?php echo $button_back; ?>
           </a>
         </div>
       </div>

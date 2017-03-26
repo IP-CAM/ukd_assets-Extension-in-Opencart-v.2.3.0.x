@@ -155,15 +155,15 @@ $i++;
 }
 ?>
 
-<<<<<<< HEAD
+
 <!-- <input name="notificationURL" type="hidden" value="http://fredukita.comeze.com/index.php" /> -->
 <!-- <input name="redirectURL" type="hidden" value="http://fredukita.comeze.com/index.php" />
 <input name="reference" type="hidden" value="" /> -->
-=======
+
 <!-- <input name="notificationURL" type="hidden" value="" /> -->
 <!-- <input name="redirectURL" type="hidden" value="" />-->
 <input name="reference" type="hidden" value="REF<?php echo $order_id ?>" />
->>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
+
 <input name="transactions_url" type="hidden" value="<?php echo $transactions ?>" />
 </form>
 
@@ -410,7 +410,7 @@ function process() {
         },
         error: function(jqxhr) {
 
-            alert(jqxhr.resonseText);
+            alert('Ocorreu um erro de processamento. Tente mais tarde');
             console.log('process error', jqxhr);
 
         },
@@ -510,7 +510,7 @@ function filterError(code) {
 
 function errorAlert(content){
 
-  $('#processModal .modal-title').html('Atenção');
+  $('#processModal .modal-title').html('Aten&ccedil;&atilde;o');
 
   $('#processModal .modal-footer').show();
 

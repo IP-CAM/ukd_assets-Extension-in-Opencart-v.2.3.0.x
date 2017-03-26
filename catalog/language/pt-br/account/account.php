@@ -20,3 +20,6 @@ $_['text_transaction']   = 'Transações';
 $_['text_newsletter']    = 'Novidades, ofertas e promoções por e-mail';
 $_['text_recurring']     = 'Assinaturas';
 $_['text_transactions']  = 'Transações';
+
+// button
+$_['button_back']        = 'Voltar';

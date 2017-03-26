@@ -1,16 +1,12 @@
 <?php
-#https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html#url=www.balash.com.br
+
 ob_end_clean();
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
 }else {
   header("HTTP/1.0 404 Not Found");
 ?>
-<<<<<<< HEAD
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-=======
 <!DOCTYPE html>
->>>>>>> 2aecf72a52b527fece512225e08573e3c88f55ea
 <html><head>
 <title>404 Not Found</title>
 <!-- <meta http-equiv="Refresh" content = "0; URL=https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html#url=www.balash.com.br"> -->

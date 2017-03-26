@@ -50,6 +50,7 @@ class ControllerAccountOrder extends Controller
 
         $data['button_view'] = $this->language->get('button_view');
         $data['button_continue'] = $this->language->get('button_continue');
+        $data['button_back'] = $this->language->get('button_back');
 
         if (isset($this->request->get['page'])) {
             $page = $this->request->get['page'];
@@ -80,6 +81,8 @@ class ControllerAccountOrder extends Controller
 				'link' => $this->model_account_order->getCustomData($result['order_id'], 'value'),
 			);
         }
+
+        //print_r(  $data['orders']);
 
         $pagination = new Pagination();
         $pagination->total = $order_total;
@@ -181,6 +184,7 @@ class ControllerAccountOrder extends Controller
             $data['button_reorder'] = $this->language->get('button_reorder');
             $data['button_return'] = $this->language->get('button_return');
             $data['button_continue'] = $this->language->get('button_continue');
+            $data['button_back'] = $this->language->get('button_back');
 
             if (isset($this->session->data['error'])) {
                 $data['error_warning'] = $this->session->data['error'];

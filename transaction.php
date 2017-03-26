@@ -38,6 +38,3 @@ $ref = $_GET['ref'];
 $transaction = curlExec('https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/?email=fredukita@gmail.com&token=9E7583A0AB8F44EC9E6D72FB81C4693F&reference=REF'.$ref);
 $xml = simplexml_load_string($transaction);
 echo json_encode($xml);
-
-
-
