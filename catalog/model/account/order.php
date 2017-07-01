@@ -166,7 +166,7 @@ class ModelAccountOrder extends Model
 
     public function getOrderHistories($order_id)
     {
-        $query = $this->db->query('SELECT date_added, os.name AS status, oh.comment, oh.notify FROM '.DB_PREFIX.'order_history oh LEFT JOIN '.DB_PREFIX."order_status os ON oh.order_status_id = os.order_status_id WHERE oh.order_id = '".(int) $order_id."' AND os.language_id = '".(int) $this->config->get('config_language_id')."' ORDER BY oh.date_added DESC LIMIT 1");
+        $query = $this->db->query('SELECT date_added, os.name AS status, oh.comment, oh.notify, oh.tracking_number FROM '.DB_PREFIX.'order_history oh LEFT JOIN '.DB_PREFIX."order_status os ON oh.order_status_id = os.order_status_id WHERE oh.order_id = '".(int) $order_id."' AND os.language_id = '".(int) $this->config->get('config_language_id')."' ORDER BY oh.date_added DESC LIMIT 1");
 
         return $query->rows;
     }

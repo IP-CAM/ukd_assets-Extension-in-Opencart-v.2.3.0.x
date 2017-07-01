@@ -3,7 +3,9 @@ php.ini
 image/cache/
 system/storage/cache/
 system/storage/logs/
+sigep/
 config.php
+conn.php
 admin/config.php
 admin/.htpasswd
 admin/.htaccess

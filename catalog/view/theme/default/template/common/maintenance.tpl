@@ -8,9 +8,7 @@
   <title>Balash - Manutenção</title>
   <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
   <style>
-    /*
-   * Globals
-   */
+    /* * Globals */
     /* Links */
 
     a,
@@ -19,7 +17,7 @@
       color: #FFB2DB;
     }
 
-    .cover-heading{
+    .cover-heading {
       font-size: 60px;
     }
     /* Custom default button */
@@ -33,9 +31,7 @@
       background-color: #fff;
       border: 1px solid #fff;
     }
-    /*
-   * Base structure
-   */
+    /* * Base structure */
 
     html,
     body {
@@ -74,9 +70,7 @@
     .inner {
       padding: 30px;
     }
-    /*
-   * Header
-   */
+    /* * Header */
 
     .masthead-brand {
       margin-top: 10px;
@@ -129,45 +123,28 @@
 </head>
 
 <body>
-
-
   <div class="site-wrapper">
-
     <div class="site-wrapper-inner">
-
       <div class="cover-container">
-
         <div class="masthead clearfix">
           <div class="inner">
-            <h3 class="masthead-brand"><img src="image/catalog/logo.png" /></h3>
-
-          </div>
+            <h3 class="masthead-brand"><img src="image/catalog/logo.png"/></h3> </div>
         </div>
-
         <div class="inner cover">
           <h1 class="cover-heading">Ooops!</h1>
           <p class="lead">
-            <?php echo $message; ?>
-          </p>
-
+            <?php echo $message; ?> </p>
         </div>
-
         <div class="mastfoot">
           <div class="inner">
-            <p>Email<br /><a href="mailto:contato@balash.com.br">contato@balash.com.br</a><br /><br />
-              Whatsapp<br /><a href="tel:+5571987186507">(71) 98718 6507</a></p>
+            <p>Email<br/><a href="mailto:contato@balash.com.br">contato@balash.com.br</a><br/><br/> Whatsapp <br/><a href="tel:+5571987186507">(71) 98718 6507</a></p>
           </div>
         </div>
-        <!-- <a href="intent://send/557188729322#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">LETICIA</a>       -->
       </div>
-
     </div>
-
   </div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

@@ -239,6 +239,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label">Código de rastreamento</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="tracking_number" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-override"><span data-toggle="tooltip" title="<?php echo $help_override; ?>"><?php echo $entry_override; ?></span></label>
                   <div class="col-sm-10">
                     <input type="checkbox" name="override" value="1" id="input-override" />
@@ -591,7 +597,7 @@ $('#button-history').on('click', function() {
 		url: '<?php echo $catalog; ?>index.php?route=api/order/history&token=' + token + '&store_id=<?php echo $store_id; ?>&order_id=<?php echo $order_id; ?>',
 		type: 'post',
 		dataType: 'json',
-		data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + ($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&override=' + ($('input[name=\'override\']').prop('checked') ? 1 : 0) + '&append=' + ($('input[name=\'append\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+		data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + ($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&override=' + ($('input[name=\'override\']').prop('checked') ? 1 : 0) + '&append=' + ($('input[name=\'append\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()) + '&tracking_number=' + encodeURIComponent($('input[name=\'tracking_number\']').val()),
 		beforeSend: function() {
 			$('#button-history').button('loading');
 		},

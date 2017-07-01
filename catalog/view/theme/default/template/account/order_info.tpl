@@ -208,10 +208,13 @@
               <?php echo $column_date_added; ?>
             </td>
             <td class="text-left">
-              <?php echo $column_status; ?>
+              <?php echo 'Situação do pedido' ?>
             </td>
             <td class="text-left">
-              <?php echo $column_comment; ?>
+              <?php echo 'Pagamento' ?>
+            </td>
+            <td class="text-left">
+              <?php echo 'Código de rastreamento' ?>
             </td>
             <td class="text-left"></td>
           </tr>
@@ -222,6 +225,9 @@
           <tr>
             <td class="text-left">
               <?php echo $history['date_added']; ?>
+            </td>
+            <td class="text-left">
+              <?php echo $history['status']; ?>
             </td>
             <td class="text-left">
               <?php
@@ -237,11 +243,19 @@
             ?>
             </td>
             <td class="text-left">
-              <?php echo $history['comment']; ?>
+              <?php
+              $tracking_number = $history['tracking_number'];
+              if($tracking_number && strlen($tracking_number) == 13):
+              ?>
+              <form id="tracking" method="POST" target="_blank" action="http://www2.correios.com.br/sistemas/rastreamento/resultado_semcontent.cfm" class="shipment-details-service__correios">
+                  <input type="hidden" name="Objetos" value="<?php echo $tracking_number; ?>">
+                  <a style="cursor:pointer" onclick="document.getElementById('tracking').submit()""><?php echo $tracking_number; ?></a>
+              </form>
+              <?php endif ?>
             </td>
             <td class="text-left">
               <?php if( isset($_GET['paynow']) ) { ?>
-              <a class="btn btn-secondary" target="_blank" href="<?php echo trim($_GET['link'],'\'') ?>">Pagar agora</a>'</td>
+              <a class="btn btn-primary" target="_blank" href="<?php echo trim($_GET['link'],'\'') ?>">Pagar agora</a>'</td>
               <?php  } ?>
 
           </tr>

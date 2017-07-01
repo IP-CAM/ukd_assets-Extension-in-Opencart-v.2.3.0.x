@@ -372,6 +372,7 @@ class ControllerAccountOrder extends Controller
 									'status' => $result['status'],
 									'link' => $this->model_account_order->getCustomData($data['order_id'], 'value'),
 									'comment' => $result['notify'] ? nl2br($result['comment']) : '',
+                  'tracking_number' => $result['tracking_number']
 								);
             }
 
